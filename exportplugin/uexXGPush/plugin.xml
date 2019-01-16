@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<uexplugins>
+
+    <plugin
+        className="com.tencent.xinge4appcan.EUExXGPush"
+        uexName="uexXGPush" >
+        <method name="enableDebug" />
+        <method name="setAccessidAndKey" />
+        <method name="registerPush" />
+        <method name="unregisterPush" />
+        <method name="setTag" />
+        <method name="delTag" />
+        <method name="cancelNotification" />
+    </plugin>
+
+</uexplugins>

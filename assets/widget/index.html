@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	
+	<script type="text/javascript">
+	
+	function onRegisterCallback(opCode, dataType, data){
+		if(opCode==0){
+			alert("注册成功，token为："+data);
+		}else{
+			alert("注册失败，错误码："+opCode + "，错误信息："+data);
+		}
+	}
+
+	function onUnregisterCallback(opCode, dataType, data){
+		if(opCode==0){
+			alert("反注册成功，token为："+data);
+		}else{
+			alert("反注册失败，错误码："+opCode + "，错误信息："+data);
+		}
+	}
+		
+	function onSetTagCallback(opCode, dataType, data){
+		if(opCode==0){
+			alert("设置成功，tagName为："+data);
+		}else{
+			alert("设置失败，错误码："+opCode + "，tagName为："+data);
+		}
+	}
+	
+	function onDelTagCallback(opCode, dataType, data){
+		if(opCode==0){
+			alert("删除成功，tagName为："+data);
+		}else{
+			alert("删除失败，错误码："+opCode + "，tagName为："+data);
+		}
+	}
+
+	function onNotificationShowedCallback(opCode, dataType, data){
+		// alert("展示通知,data=" + data)
+		data  = JSON.parse(data);
+		alert("展示通知，标题："+data.title+"，内容："+data.content + "，自定义内容："+data.customContent+"，打开的activity："+data.activity+"，msgid："+data.msgId);
+	}
+	
+	function onNotificationCilckedCallback(opCode, dataType, data){
+		// alert("通知点击或清除,data=" + data)
+		data  = JSON.parse(data);
+		if(data.type == 0){
+			alert("通知被点击，标题："+data.title+"，内容："+data.content + "，自定义内容："+data.customContent+"，打开的activity："+data.activity+"，msgid："+data.msgId);
+		}else if(data.type == 2){
+			alert("通知被清除，标题："+data.title+"，内容："+data.content + "，自定义内容："+data.customContent+"，打开的activity："+data.activity+"，msgid："+data.msgId);
+		}
+	}
+	
+	function onTextMessageCallback(opCode, dataType, data){
+		// alert("收到消息透传,data=" + data)
+		 data  = JSON.parse(data);
+		 alert("收到消息透传，内容："+data.content + "，自定义内容："+data.customContent+"，标题："+data.title);
+	}
+	
+	window.uexOnload = function(type){
+		if(type == 0){  
+			uexXGPush.onRegisterCb = onRegisterCallback;
+			uexXGPush.onUnregisterCb = onUnregisterCallback;
+			uexXGPush.onSetTagCb = onSetTagCallback;
+			uexXGPush.onDelTagCb = onDelTagCallback;
+			uexXGPush.onNotificationShowedCb = onNotificationShowedCallback;
+			uexXGPush.onNotificationCilckedCb = onNotificationCilckedCallback;
+			uexXGPush.onTextMessageCb = onTextMessageCallback;
+		}
+	}
+	
+	function enableDebug(){
+		uexXGPush.enableDebug("true");
+	}
+	
+	function setAccessidAndKey(){
+		uexXGPush.setAccessidAndKey(2100091983, "AW46QY2AT77L");
+	}
+	
+	function registerPush(){
+		uexXGPush.registerPush();
+	}
+	
+	function registerAndBindAccount(){
+		uexXGPush.registerPush("test");
+	}
+	
+	function unbindAccount(){
+		uexXGPush.registerPush("*");
+	}
+	
+	function unregisterPush(){
+		uexXGPush.unregisterPush();
+	}
+	
+		
+	function setTag(){
+		uexXGPush.setTag("true");
+	}	
+	
+	function delTag(){
+		uexXGPush.delTag("true");
+	}	
+
+	function cancelNotification(){
+		uexXGPush.cancelNotification();
+	}	
+	
+</script>
+</head>
+
+<body>
+	<div class="tit">uexDemo对象</div>
+	<div class="conbor">
+		<div class="consj">
+		        <input type="button" onclick="enableDebug()" value="开启debug" /><br><br>
+		        <input type="button" onclick="setAccessidAndKey()" value="设置id与key" /><br><br>
+            	<input type="button" onclick="registerPush()" value="注册设备" /><br><br>
+            	<input type="button" onclick="registerAndBindAccount()" value="注册设备并绑定账号" /><br><br>
+            	<input type="button" onclick="unbindAccount()" value="解除账号绑定" /><br><br>
+            	<input type="button" onclick="unregisterPush()" value="反注册（不需要再接收通知）" /><br><br>
+            	<input type="button" onclick="setTag()" value="设置标签" /><br><br>
+            	<input type="button" onclick="delTag()" value="删除标签" /><br><br>
+            	<!-- <input type="button" onclick="cancelNotification()" value="清除所有展示的通知" /><br><br>
+            	<input type="button" onclick="onTextMessage()" value="设置消息透传的回调" /><br><br>
+            	<input type="button" onclick="onNotificationShow()" value="通知被展示的回调" /><br><br>
+            	<input type="button" onclick="onNotificationClick()" value="通知被点击的回调" /><br><br>
+            	<input type="button" onclick="onNotificationClear()" value="通知被清除的回调" /><br><br>
+            	<input type="button" onclick="addlocalNotification()" value="添加本地通知" /><br><br>
+            	<input type="button" onclick="clearLocalNotifications()" value="清除所有本地通知" /><br><br> -->
+		</div>
+	</div>
+</body>
+</html>
