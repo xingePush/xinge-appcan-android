@@ -4,9 +4,9 @@
 - 本项目是信鸽在AppCan发布的插件[uexXGPush](http://plugin.appcan.cn/details.html#462_index)的Android版本源码。
 - 基于的信鸽SDK版本是2.4.2。
 
-# APICloud模块开发说明
+# AppCan模块开发说明
 
-本工程是基于Eclipse开发的，请先了解APICloud的插件开发流程，参见AppCan的[AndroidNative插件扩展机制开发文档](http://newdocx.appcan.cn/newdocx/docx?type=1366_1291)
+本工程是基于Eclipse开发的，请先了解AppCan的插件开发流程，参见AppCan的[AndroidNative插件扩展机制开发文档](http://newdocx.appcan.cn/newdocx/docx?type=1366_1291)
 
 ## src目录
 信鸽uexXGPush插件的java源码，最终编译成**plugin_uexXGPush.jar**
